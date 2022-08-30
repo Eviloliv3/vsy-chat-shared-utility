@@ -1,4 +1,4 @@
-package de.vsy.chat.shared_utility.standard_value;
+package de.vsy.shared_utility.standard_value;
 
 /** @author fredward */
 public

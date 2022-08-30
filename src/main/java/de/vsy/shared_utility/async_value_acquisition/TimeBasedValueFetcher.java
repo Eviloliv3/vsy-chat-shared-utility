@@ -1,6 +1,6 @@
-package de.vsy.chat.shared_utility.async_value_acquisition;
+package de.vsy.shared_utility.async_value_acquisition;
 
-import de.vsy.chat.shared_utility.logging.ThreadContextRunnable;
+import de.vsy.shared_utility.logging.ThreadContextRunnable;
 
 import java.time.Instant;
 import java.util.concurrent.CountDownLatch;

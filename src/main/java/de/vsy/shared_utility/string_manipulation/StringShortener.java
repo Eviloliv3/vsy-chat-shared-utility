@@ -1,4 +1,4 @@
-package de.vsy.chat.shared_utility.string_manipulation;
+package de.vsy.shared_utility.string_manipulation;
 
 public
 class StringShortener {

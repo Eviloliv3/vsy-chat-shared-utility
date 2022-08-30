@@ -1,4 +1,4 @@
-package de.vsy.chat.shared_utility.logging;
+package de.vsy.shared_utility.logging;
 
 import org.apache.logging.log4j.ThreadContext;
 

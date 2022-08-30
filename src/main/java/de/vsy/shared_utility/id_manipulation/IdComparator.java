@@ -1,4 +1,4 @@
-package de.vsy.chat.shared_utility.id_manipulation;
+package de.vsy.shared_utility.id_manipulation;
 
 public
 class IdComparator {

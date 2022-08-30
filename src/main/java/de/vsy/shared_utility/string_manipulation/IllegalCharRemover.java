@@ -1,7 +1,7 @@
 /*
  *
  */
-package de.vsy.chat.shared_utility.string_manipulation;
+package de.vsy.shared_utility.string_manipulation;
 
 /** Simple tools for removing special characters from Strings. */
 public

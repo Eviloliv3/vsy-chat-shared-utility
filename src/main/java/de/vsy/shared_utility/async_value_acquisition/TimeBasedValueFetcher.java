@@ -1,6 +1,8 @@
 package de.vsy.shared_utility.async_value_acquisition;
 
 import de.vsy.shared_utility.logging.ThreadContextRunnable;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.time.Instant;
 import java.util.concurrent.CountDownLatch;
@@ -10,6 +12,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 public
 class TimeBasedValueFetcher<T> extends ThreadContextRunnable {
 
+    private static final Logger LOGGER = LogManager.getLogger();
     private final T expectedValue;
     private final Instant terminationTime;
     private final CountDownLatch latch;
@@ -41,18 +44,22 @@ class TimeBasedValueFetcher<T> extends ThreadContextRunnable {
     @Override
     protected
     void runWithContext () {
-        if (Instant.now().isBefore(this.terminationTime)) {
+        final var now = Instant.now();
+
+        if (now.isBefore(this.terminationTime)) {
             try {
                 this.lock.writeLock().lock();
                 this.currentValue = this.fetcher.getValue();
 
                 if (this.currentValue.equals(this.expectedValue)) {
+                    LOGGER.trace("ValueFetcher nach erwartetem Wert beendet: {}/{}", this.currentValue, this.expectedValue);
                     this.latch.countDown();
                 }
             } finally {
                 this.lock.writeLock().unlock();
             }
         } else {
+            LOGGER.trace("ValueFetcher nach Timeout beendet. {} nach {}", now.getNano(), this.terminationTime.getNano());
             this.latch.countDown();
         }
     }

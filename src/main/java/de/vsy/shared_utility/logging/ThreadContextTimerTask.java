@@ -1,33 +1,28 @@
 package de.vsy.shared_utility.logging;
 
-import org.apache.logging.log4j.ThreadContext;
-
 import java.util.Map;
 import java.util.TimerTask;
+import org.apache.logging.log4j.ThreadContext;
 
-public abstract
-class ThreadContextTimerTask extends TimerTask {
+public abstract class ThreadContextTimerTask extends TimerTask {
 
-    private final Map<String, String> contextMap;
+  private final Map<String, String> contextMap;
 
-    public
-    ThreadContextTimerTask () {
-        contextMap = ThreadContext.getContext();
+  public ThreadContextTimerTask() {
+    contextMap = ThreadContext.getContext();
+  }
+
+  @Override
+  public void run() {
+    if (contextMap != null) {
+      ThreadContext.putAll(contextMap);
     }
-
-    @Override
-    public
-    void run () {
-        if (contextMap != null) {
-            ThreadContext.putAll(contextMap);
-        }
-        try {
-            runWithContext();
-        } finally {
-            ThreadContext.clearAll();
-        }
+    try {
+      runWithContext();
+    } finally {
+      ThreadContext.clearAll();
     }
+  }
 
-    protected abstract
-    void runWithContext ();
+  protected abstract void runWithContext();
 }

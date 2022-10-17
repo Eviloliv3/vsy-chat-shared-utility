@@ -5,6 +5,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
@@ -52,14 +54,14 @@ class TimeBasedValueFetcher<T> extends ThreadContextRunnable {
                 this.currentValue = this.fetcher.getValue();
 
                 if (this.currentValue.equals(this.expectedValue)) {
-                    LOGGER.trace("ValueFetcher nach erwartetem Wert beendet: {}/{}", this.currentValue, this.expectedValue);
+                    LOGGER.trace("CountDownLatch reduziert. Erwarteter Wert gelesen: {}/{}", this.currentValue, this.expectedValue);
                     this.latch.countDown();
                 }
             } finally {
                 this.lock.writeLock().unlock();
             }
         } else {
-            LOGGER.trace("ValueFetcher nach Timeout beendet. {} nach {}", now.getNano(), this.terminationTime.getNano());
+            LOGGER.trace("CountDownLatch reduziert. ValueFetcher Timeout erreicht.");
             this.latch.countDown();
         }
     }

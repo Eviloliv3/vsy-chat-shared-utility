@@ -47,7 +47,7 @@ public class TimeBasedValueFetcher<T> extends ThreadContextRunnable {
         this.currentValue = this.fetcher.getValue();
 
         if (this.currentValue.equals(this.expectedValue)) {
-          LOGGER.trace("CountDownLatch reduziert. Erwarteter Wert gelesen: {}/{}",
+          LOGGER.trace("CountDownLatch counted down. Expected value read: {}/{}",
               this.currentValue,
               this.expectedValue);
           this.latch.countDown();
@@ -56,7 +56,7 @@ public class TimeBasedValueFetcher<T> extends ThreadContextRunnable {
         this.lock.writeLock().unlock();
       }
     } else {
-      LOGGER.trace("CountDownLatch reduziert. ValueFetcher Timeout erreicht.");
+      LOGGER.trace("CountDownLatch counted down. ValueFetcher timeout reached.");
       this.latch.countDown();
     }
   }

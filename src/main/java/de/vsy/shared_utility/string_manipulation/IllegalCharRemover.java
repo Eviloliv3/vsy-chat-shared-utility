@@ -4,7 +4,7 @@
 package de.vsy.shared_utility.string_manipulation;
 
 /**
- * Simple tools for removing special characters from Strings.
+ * Simple tool for removing special characters from Strings.
  */
 public class IllegalCharRemover {
 
@@ -19,10 +19,10 @@ public class IllegalCharRemover {
   }
 
   /**
-   * Validate string.
+   * If illegal characters are found, new String without illegal characters is returned.
    *
    * @param toValidate the to validate
-   * @return the string
+   * @return the validated string
    */
   public static String adjustString(final String toValidate) {
     var tmpString = toValidate;

@@ -1,5 +1,8 @@
 package de.vsy.shared_utility.standard_value;
 
+/**
+ * Standard id provider for not synchronized communication entities.
+ */
 public class StandardIdProvider {
 
   public static final int STANDARD_SERVER_ID = -1;

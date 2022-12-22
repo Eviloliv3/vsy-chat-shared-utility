@@ -1,5 +1,8 @@
 package de.vsy.shared_utility.standard_value;
 
+/**
+ * Standard ThreadContext keys for Log4j logging.
+ */
 public class ThreadContextValues {
 
   public static final String LOG_ROUTE_CONTEXT_KEY = "routeDir";

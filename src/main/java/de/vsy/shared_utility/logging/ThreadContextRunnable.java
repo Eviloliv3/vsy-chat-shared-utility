@@ -3,6 +3,9 @@ package de.vsy.shared_utility.logging;
 import java.util.Map;
 import org.apache.logging.log4j.ThreadContext;
 
+/**
+ * Used to manually pass Log4J ThreadContext from parent thread to Runnable.
+ */
 public abstract class ThreadContextRunnable implements Runnable {
 
   private final Map<String, String> contextMap;

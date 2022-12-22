@@ -4,6 +4,9 @@ import java.util.Map;
 import java.util.TimerTask;
 import org.apache.logging.log4j.ThreadContext;
 
+/**
+ * Used to manually pass Log4J ThreadContext from parent thread to TimerTask.
+ */
 public abstract class ThreadContextTimerTask extends TimerTask {
 
   private final Map<String, String> contextMap;

@@ -8,6 +8,12 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Fetches values, using a generic ValueFetcher, until an expected value is fetched or a timeout is
+ * reached, if run as scheduled task. Fetches once per run.
+ *
+ * @param <T> type of value that will be fetched
+ */
 public class TimeBasedValueFetcher<T> extends ThreadContextRunnable {
 
   private static final Logger LOGGER = LogManager.getLogger();
@@ -28,6 +34,11 @@ public class TimeBasedValueFetcher<T> extends ThreadContextRunnable {
     this.lock = new ReentrantReadWriteLock();
   }
 
+  /**
+   * Returns last fetched value.
+   *
+   * @return fetched value of generic type
+   */
   public T getFetchedValue() {
     try {
       this.lock.readLock().lock();

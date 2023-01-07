@@ -52,7 +52,7 @@ public class TimeBasedValueFetcher<T> extends ThreadContextRunnable {
   protected void runWithContext() {
     final var now = Instant.now();
 
-    if (now.isBefore(this.terminationTime)) {
+    if (now.isBefore(this.terminationTime) && !(this.expectedValue.equals(this.currentValue))) {
       try {
         this.lock.writeLock().lock();
         this.currentValue = this.fetcher.getValue();
@@ -67,7 +67,8 @@ public class TimeBasedValueFetcher<T> extends ThreadContextRunnable {
         this.lock.writeLock().unlock();
       }
     } else {
-      LOGGER.trace("CountDownLatch counted down. ValueFetcher timeout reached.");
+      LOGGER.trace("CountDownLatch counted down. Expected value read or timeout" +
+              " reached.");
       this.latch.countDown();
     }
   }

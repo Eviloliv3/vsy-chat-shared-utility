@@ -41,8 +41,9 @@ public class TimeBasedValueFetcher<T> extends ThreadContextRunnable {
      * @return fetched value of generic type
      */
     public T getFetchedValue() {
+        this.lock.readLock().lock();
+
         try {
-            this.lock.readLock().lock();
             return this.currentValue;
         } finally {
             this.lock.readLock().unlock();
@@ -54,8 +55,9 @@ public class TimeBasedValueFetcher<T> extends ThreadContextRunnable {
         final var now = Instant.now();
 
         if (now.isBefore(this.terminationTime) && !(this.expectedValue.equals(this.currentValue))) {
+            this.lock.writeLock().lock();
+
             try {
-                this.lock.writeLock().lock();
                 this.currentValue = this.fetcher.getValue();
 
                 if (this.currentValue.equals(this.expectedValue)) {

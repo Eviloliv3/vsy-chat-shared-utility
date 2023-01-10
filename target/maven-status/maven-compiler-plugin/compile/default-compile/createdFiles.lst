@@ -4,7 +4,7 @@ de/vsy/shared_utility/async_value_acquisition/ValueFetcher.class
 de/vsy/shared_utility/string_manipulation/IllegalCharRemover.class
 de/vsy/shared_utility/logging/ThreadContextTimerTask.class
 de/vsy/shared_utility/standard_value/StandardIdProvider.class
-de/vsy/shared_utility/async_value_acquisition/TimeBasedValueFetcher.class
 de/vsy/shared_utility/logging/ThreadContextRunnable.class
+de/vsy/shared_utility/async_value_acquisition/TimeBasedValueFetcher.class
 de/vsy/shared_utility/standard_value/ThreadContextValues.class
 de/vsy/shared_utility/id_manipulation/IdComparator.class

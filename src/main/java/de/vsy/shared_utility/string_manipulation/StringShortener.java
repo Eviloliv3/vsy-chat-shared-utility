@@ -30,7 +30,6 @@ public class StringShortener {
      *
      * @param toCut        the String to shorten
      * @param cuttingCount the amount of trailing characters to remove
-     * @return the shortened String
      */
     public static void cutTrailingChars(StringBuilder toCut, int cuttingCount) {
         if (toCut.length() >= cuttingCount) {

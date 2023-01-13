@@ -4,9 +4,8 @@ package de.vsy.shared_utility.async_value_acquisition;
 public interface ValueFetcher<T> {
 
     /**
-     * Gets Value of generic type.
-     *
-     * @return value of type T
+     * Gets value of specific type.
+     * @return value of specific type
      */
     T getValue();
 }

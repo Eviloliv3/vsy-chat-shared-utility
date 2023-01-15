@@ -5,6 +5,7 @@ public interface ValueFetcher<T> {
 
     /**
      * Gets value of specific type.
+     *
      * @return value of specific type
      */
     T getValue();

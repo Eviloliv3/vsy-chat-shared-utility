@@ -1,6 +1,4 @@
-/*
- *
- */
+
 package de.vsy.shared_utility.string_manipulation;
 
 /**
